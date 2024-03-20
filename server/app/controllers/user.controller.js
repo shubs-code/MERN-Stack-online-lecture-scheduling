@@ -17,6 +17,20 @@ exports.adminBoard = (req, res) => {
   res.status(200).send("Admin Content.");
 };
 
+
+exports.getCourses = (req, res) => {
+
+  Course.find().exec((err, courses) => {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }else{
+      res.status(200).send(courses);
+      return;
+    }
+  })
+};
+
 exports.addCourse = (req, res) => {
   
   const course = new Course({
@@ -31,7 +45,7 @@ exports.addCourse = (req, res) => {
       res.status(500).send({ message: err });
       return;
     }else{
-      res.status(200).send({ course });
+      res.status(200).send( course );
       return;
     }
   })
@@ -107,6 +121,21 @@ exports.instructorLectures = (req, res) => {
   Lecture.find({
     instructorId:req.userId
   }).populate("course").exec((err, lectures) => {
+    
+    if (lectures) {
+      res.status(200).send(lectures);
+      return;
+    }
+    res.status(500).send({ message: "Unknown error" });
+      return;
+    });
+};
+
+exports.getCourseLectures = (req, res) => {
+  
+  Lecture.find({
+    course:req.params.courseId
+  }).populate("course").populate("instructorId").exec((err, lectures) => {
     
     if (lectures) {
       res.status(200).send(lectures);

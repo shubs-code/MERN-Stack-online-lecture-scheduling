@@ -21,10 +21,12 @@ module.exports = function(app) {
 
   app.get("/api/admin",controller.adminBoard);
   
+  app.get("/api/admin/courses",controller.getCourses);
   app.post("/api/admin/course",controller.addCourse);
   
   app.post("/api/admin/lecture",controller.addLecture);
-
+  app.get("/api/admin/lectures/:courseId",controller.getCourseLectures);
+  
   app.get("/api/admin/instructors",controller.getInstructors);
 
 

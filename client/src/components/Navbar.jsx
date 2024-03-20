@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import LoginButton from "./LoginButton";
 
 export default function Navbar() {
+
   return (
     <div>
       <nav className="flex justify-between items-center mb-6">

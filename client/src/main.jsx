@@ -5,11 +5,10 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import App from "./App";
-import Record from "./components/Record";
-import RecordList from "./components/RecordList";
 import "./index.css";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import HomePage from "./components/HomePage";
 import Admin from "./components/Dashboard/Admin";
 import Instructor from "./components/Dashboard/Instructor";
 
@@ -20,27 +19,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <RecordList />,
-      },
-    ],
-  },
-  {
-    path: "/create",
-    element: <App />,
-    children: [
-      {
-        path: "/create",
-        element: <Record />,
-      },
-    ],
-  },
-  {
-    path: "/edit/:id",
-    element: <App />,
-    children: [
-      {
-        path: "/edit/:id",
-        element: <Record />,
+        element: <HomePage/>,
       },
     ],
   },

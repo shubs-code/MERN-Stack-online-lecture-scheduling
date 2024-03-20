@@ -1,1 +1,1 @@
-export const SERVER_URL = "https://mern-stack-example-fol8.onrender.com"
+export const SERVER_URL = "https://mern-stack-online-lecture-scheduling.onrender.com"

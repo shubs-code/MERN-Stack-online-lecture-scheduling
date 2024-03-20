@@ -8,6 +8,10 @@ import App from "./App";
 import Record from "./components/Record";
 import RecordList from "./components/RecordList";
 import "./index.css";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import Admin from "./components/Dashboard/Admin";
+import Instructor from "./components/Dashboard/Instructor";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +41,46 @@ const router = createBrowserRouter([
       {
         path: "/edit/:id",
         element: <Record />,
+      },
+    ],
+  },
+  {
+    path: "/login",
+    element: <App />,
+    children: [
+      {
+        path: "/login",
+        element: <Login/>,
+      },
+    ],
+  },
+  {
+    path: "/signup",
+    element: <App />,
+    children: [
+      {
+        path: "/signup",
+        element: <Signup/>,
+      },
+    ],
+  },
+  {
+    path: "/dashboard/admin",
+    element: <App />,
+    children: [
+      {
+        path: "/dashboard/admin",
+        element: <Admin/>,
+      },
+    ],
+  },
+  {
+    path: "/dashboard/instructor",
+    element: <App />,
+    children: [
+      {
+        path: "/dashboard/instructor",
+        element: <Instructor/>,
       },
     ],
   },

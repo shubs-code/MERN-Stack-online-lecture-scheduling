@@ -14,15 +14,26 @@ module.exports = function(app) {
 
   app.get("/api/user", [authJwt.verifyToken], controller.userBoard);
 
-  app.get(
-    "/api/mod",
-    [authJwt.verifyToken, authJwt.isModerator],
-    controller.moderatorBoard
+  //admin routes
+  app.use("/api/admin/*",
+    [authJwt.verifyToken, authJwt.isAdmin]
   );
 
-  app.get(
-    "/api/admin",
-    [authJwt.verifyToken, authJwt.isAdmin],
-    controller.adminBoard
+  app.get("/api/admin",controller.adminBoard);
+  
+  app.post("/api/admin/course",controller.addCourse);
+  
+  app.post("/api/admin/lecture",controller.addLecture);
+
+  app.get("/api/admin/instructors",controller.getInstructors);
+
+
+  //instructor routes
+  app.use(
+    "/api/instructor/*",
+    [authJwt.verifyToken, authJwt.isModerator]
   );
+
+  app.get("/api/instructor/lectures", controller.instructorLectures);
+
 };

@@ -6,7 +6,7 @@ export default function Navbar() {
     <div>
       <nav className="flex justify-between items-center mb-6">
         <NavLink to="/">
-          <img alt="Online Scheduler" className="h-12 inline" src="online_scheduler.png"></img>
+          <img alt="Online Scheduler" className="h-12 inline" src="/online_scheduler.png"></img>
         </NavLink>
 
         <LoginButton/>

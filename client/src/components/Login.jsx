@@ -43,7 +43,13 @@ const Login = () => {
         }
         const response_body = await response.json()
         console.log(response_body);
-        navigate("/dashboard/admin")
+        sessionStorage.setItem("access-token",response_body.accessToken);
+        sessionStorage.setItem("username",response_body.username);
+        if(response_body.roles.indexOf("ROLE_INSTRUCTOR") != -1){
+            navigate("/dashboard/instructor")
+        }else if(response_body.roles.indexOf("ROLE_ADMIN") != -1){
+            navigate("/dashboard/admin")
+        }
       }
       signin();
 }
